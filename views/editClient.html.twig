@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+
+{% block header %}
+    <h2>Edit {{ client[0].getName }}'s Info</h2>
+{% endblock %}
+
+{% block content %}
+    <div class='form-group'>
+        <form action='/client/updated/{{ client[0].getId }}' method='post'>
+            <input type='hidden' name="_method" value="patch">
+            <p>Current Client Name: <strong>{{ client[0].getName }}</strong></p>
+
+            <label for='name'>New client name: </label>
+            <input type='text' name='name'>
+
+            <select name='stylist_id'>
+                <option></option>
+                {% for stylist in stylists %}
+                    <option value='{{ stylist.getId }}'>{{ stylist.getName }}</option>
+                {% endfor %}
+            </select>
+
+            <button type='submit'>Update info</button>
+        </form>
+    </div>
+
+{% endblock %}

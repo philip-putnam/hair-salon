@@ -19,7 +19,7 @@
         <h3>Current Clients</h3>
         <ul>
             {% for client in clients %}
-                <li>{{ client.getName }}
+                <li><a href='/stylist/{{ stylist[0].getid }}/edit/client/{{ client.getId }}'>{{ client.getName }}</a>
                   <form action='/stylist/{{ stylist[0].getId }}/delete/client/{{ client.getId }}' method='post'>
                       <input type='hidden' name='_method' value='delete'>
                       <button type='submit'>delete</button>
