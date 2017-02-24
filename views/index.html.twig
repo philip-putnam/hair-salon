@@ -14,4 +14,13 @@
         <button type='submit'>Add Stylist</button>
       </form>
     </div>
+
+    {% if stylists is not empty %}
+        <h3>Current Stylists</h3>
+        <ul>
+            {% for stylist in stylists %}
+                <li>{{ stylist.getName }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 {% endblock %}
