@@ -5,6 +5,10 @@
     <h2>Main</h2>
 {% endblock %}
 {% block home %}
+    <form action='/stylists/delete-all' method='post'>
+        <input type='hidden' name='_method' value='delete'>
+        <button type='submit'>Delete all stylists and clients</button>
+    </form>
 {% endblock %}
 
 {% block content %}
