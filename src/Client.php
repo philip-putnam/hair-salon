@@ -80,7 +80,7 @@
 
         static function update($new_name, $new_stylist_id, $client_id)
         {
-
+            $GLOBALS['DB']->exec("UPDATE clients SET name = '{$new_name}', stylist_id = {$new_stylist_id} WHERE id = {$client_id};");
         }
 
         static function deleteClient($client_id)
