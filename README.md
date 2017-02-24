@@ -31,9 +31,9 @@ then in a web browser, navigate to 'localhost:8000_
 * _> USE hair_salon;_
 * _> CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR (255));_
 * _> CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR (255), stylist_id int);_
-* _> Open Apache server from either MAMP or navigating to localhost:<apache-port#>/MAMP/ , where <apache-port# is the port number indicated for the Apache port in MAMP Preferences..._
-* _> Click phpMyAdmin link, then click on the hair_salon database on the left of the screen_
-* _> Click the 'operations' tab, in 'Copy database to:' type hair_salon_test and select 'Structure only' then click 'Go'_
+* _Open Apache server from either MAMP or navigating to localhost:<apache-port#>/MAMP/ , where <apache-port# is the port number indicated for the Apache port in MAMP Preferences..._
+* _Click phpMyAdmin link, then click on the hair_salon database on the left of the screen_
+* _Click the 'operations' tab, in 'Copy database to:' type hair_salon_test and select 'Structure only' then click 'Go'_
 
 ## Specifications
 
