@@ -80,7 +80,7 @@
 
         static function deleteClient($client_id)
         {
-            
+            $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$client_id};");
         }
 
     }
