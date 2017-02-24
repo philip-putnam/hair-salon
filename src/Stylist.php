@@ -76,6 +76,11 @@
 
         static function update($stylist_id, $new_name)
         {
+            if ($new_name === "")
+            {
+                $stylist = Stylist::find($stylist_id);
+                $new_name = $stylist[0]->getName();
+            }
             $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$new_name}' WHERE id = $stylist_id;");
         }
 
