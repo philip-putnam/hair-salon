@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+
+{% block header %}
+    <h2>Edit {{ stylist[0].getName }}'s Info</h2>
+{% endblock %}
+
+{% block content %}
+    <div class='form-group'>
+        <form action='/stylist/{{ stylist[0].getId }}/updated' method='post'>
+            <input type='hidden' name="_method" value="patch">
+            <p>Current Stylist Name: <strong>{{ stylist[0].getName }}</strong></p>
+
+            <label for='name'>New stylist name: </label>
+            <input type='text' name='name'>
+
+            <button type='submit'>Update info</button>
+        </form>
+    </div>
+
+{% endblock %}
