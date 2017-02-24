@@ -175,6 +175,25 @@
           $this->assertEquals([], $result);
         }
 
+        function test_find()
+        {
+          //Arrange
+          $stylist = new Stylist("Debra Collins");
+          $stylist->save();
+
+          $george = new Client("George Clooney", $stylist->getId());
+          $george->save();
+          $gwen = new Client("Gwen Stefani", $stylist->getId());
+          $gwen->save();
+
+          //Act
+          $result = $george;
+          $found_client = Client::find($george->getId());
+
+          //Assert
+          $this->assertEquals($found_client, [$george]);
+        }
+
     }
 
 ?>
