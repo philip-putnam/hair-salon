@@ -46,6 +46,20 @@
             $this->assertEquals($new_name, $result);
         }
 
+        function test_getId()
+        {
+            //Arrange
+            $id = 4;
+            $stylist = new Stylist("Debra Collins", $id);
+
+            //Act
+            $result = $id;
+            $stylist_id = $stylist->getId();
+
+            //Assert
+            $this->assertEquals($stylist_id, $result);
+        }
+
         function test_getAll()
         {
             //Arrange
