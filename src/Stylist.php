@@ -31,6 +31,11 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        static function find($stylist_id)
+        {
+
+        }
+
         static function getAll()
         {
             $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");

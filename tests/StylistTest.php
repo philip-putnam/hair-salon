@@ -16,7 +16,7 @@
     {
         protected function tearDown()
         {
-            $GLOBALS['DB']->exec("DELETE FROM stylists");
+            Stylist::deleteAll();
         }
 
         function test_getName()
@@ -90,41 +90,56 @@
 
         function test_save()
         {
-          //Arrange
-          $debra = new Stylist("Debra Collins");
-          $debra->save();
-          $george = new Stylist("George Peterson");
-          $george->save();
-          $jorge = new Stylist("Jose Martinez");
-          $jorge->save();
-          $jen = new Stylist("Jen Doe");
-          $jen->save();
+            //Arrange
+            $debra = new Stylist("Debra Collins");
+            $debra->save();
+            $george = new Stylist("George Peterson");
+            $george->save();
+            $jorge = new Stylist("Jose Martinez");
+            $jorge->save();
+            $jen = new Stylist("Jen Doe");
+            $jen->save();
 
-          //Act
-          $result = Stylist::getAll();
+            //Act
+            $result = Stylist::getAll();
 
-          //Assert
-          $this->assertEquals([$debra, $george, $jorge, $jen], $result);
+            //Assert
+            $this->assertEquals([$debra, $george, $jorge, $jen], $result);
         }
 
         function test_deleteAll()
         {
-           //Arrange
-           $debra = new Stylist("Debra Collins");
-           $debra->save();
-           $george = new Stylist("George Peterson");
-           $george->save();
-           $jorge = new Stylist("Jose Martinez");
-           $jorge->save();
-           $jen = new Stylist("Jen Doe");
-           $jen->save();
+            //Arrange
+            $debra = new Stylist("Debra Collins");
+            $debra->save();
+            $george = new Stylist("George Peterson");
+            $george->save();
+            $jorge = new Stylist("Jose Martinez");
+            $jorge->save();
+            $jen = new Stylist("Jen Doe");
+            $jen->save();
 
-           //Act
-           Stylist::deleteAll();
-           $result = Stylist::getAll();
+            //Act
+            Stylist::deleteAll();
+            $result = Stylist::getAll();
 
-           //Assert
-           $this->assertEquals([], $result);
+            //Assert
+            $this->assertEquals([], $result);
+        }
+
+        function test_find()
+        {
+            //Arrange
+            $debra = new Stylist("Debra Collins");
+            $debra->save();
+            $george = new Stylist("George Peterson");
+            $george->save();
+
+            //Act
+            $found_stylist = Stylist::find($debra->getId());
+
+            //Assert
+            $this->assertEquals($found_stylist, $debra);
         }
     }
 ?>
