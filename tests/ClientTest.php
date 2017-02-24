@@ -156,6 +156,25 @@
           $this->assertEquals([$george, $gwen], $result);
         }
 
+        function test_deleteAll()
+        {
+          //Arrange
+          $stylist = new Stylist("Debra Collins");
+          $stylist->save();
+
+          $george = new Client("George Clooney", $stylist->getId());
+          $george->save();
+          $gwen = new Client("Gwen Stefani", $stylist->getId());
+          $gwen->save();
+
+          //Act
+          Client::deleteAll();
+          $result = Client::getAll();
+
+          //Assert
+          $this->assertEquals([], $result);
+        }
+
     }
 
 ?>
