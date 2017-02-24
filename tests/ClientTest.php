@@ -194,6 +194,30 @@
             $this->assertEquals($found_client, [$george]);
         }
 
+        function test_update()
+        {
+            //Arrange
+            $stylist = new Stylist("Debra Collins");
+            $stylist->save();
+
+            $george = new Client("George Clooney", $stylist->getId());
+            $george->save();
+            $gwen = new Client("Gwen Stefani", $stylist->getId());
+            $gwen->save();
+
+            $new_name = "Gwennifer Stefoni";
+            $new_stylist = 32;
+
+            //Act
+            Client::update($new_name, $new_stylist, $gwen->getId());
+            $result = new Client($new_name, $new_stylist, $gwen->getId());
+            $found_client = Client::find($gwen->getId());
+
+            //Assert
+            $this->assertEquals($found_client, [$result]);
+
+        }
+
         function test_deletClient()
         {
             //Arrange

@@ -78,6 +78,11 @@
           return $clients;
         }
 
+        static function update($new_name, $new_stylist_id, $client_id)
+        {
+
+        }
+
         static function deleteClient($client_id)
         {
             $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$client_id};");
