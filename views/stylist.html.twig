@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+
+{% block header %}
+    <h2>{{ stylist[0].getName }}'s Page</h2>
+{% endblock %}
+
+{% block content %}
+    <div class='form-group'>
+        <form action='/add-client/{{ stylist[0].getId }}' method='post'>
+            <h4>Add a new client for {{ stylist[0].getName }}:</h4>
+            <label for='name'>New client name: </label>
+            <input type='text' name='name'>
+
+            <button type='submit'>Add client</button>
+        </form>
+    </div>
+    {% if clients is not empty %}
+        <h3>Current Clients</h3>
+        <ul>
+            {% for client in clients %}
+                <li>{{ client.getName }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
