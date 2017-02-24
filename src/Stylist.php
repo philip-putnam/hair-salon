@@ -64,6 +64,11 @@
             $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$new_name}' WHERE id = $stylist_id;");
         }
 
+        static function deleteStylist($stylist_id)
+        {
+            
+        }
+
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM stylists;");

@@ -156,7 +156,26 @@
 
             //Assert
             $this->assertEquals($updated_debra[0], $result);
+        }
 
+        function test_deleteStylist()
+        {
+            //Arrange
+            $debra = new Stylist("Debra Collins");
+            $debra->save();
+            $george = new Stylist("George Peterson");
+            $george->save();
+            $jorge = new Stylist("Jose Martinez");
+            $jorge->save();
+            $jen = new Stylist("Jen Doe");
+            $jen->save();
+
+            //Act
+            Stylist::deleteStylist($jorge->getId());
+            $result = Stylist::getAll();
+
+            //Assert
+            $this->assertEquals([$debra, $george, $jen], $result);
         }
     }
 ?>
