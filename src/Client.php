@@ -27,6 +27,11 @@
             return $this->stylist_id;
         }
 
+        function setStylistId()
+        {
+            
+        }
+
     }
 
 ?>
