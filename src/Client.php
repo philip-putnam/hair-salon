@@ -22,6 +22,11 @@
             $this->name = $new_name;
         }
 
+        function getStylistId()
+        {
+            
+        }
+
     }
 
 ?>
