@@ -129,9 +129,7 @@
             //Act
             $george = new Client($name1, $stylist_id, $id1);
             $gwen = new Client($name2, $stylist_id, $id2);
-            $result = array();
-            array_push($result, $george);
-            array_push($result, $gwen);
+            $result = array($george, $gwen);
             $found_clients = Client::getAll();
 
             //Assert

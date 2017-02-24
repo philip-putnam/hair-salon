@@ -17,6 +17,7 @@
         protected function tearDown()
         {
             Stylist::deleteAll();
+            Client::deleteAll();
         }
 
         function test_getName()
@@ -78,10 +79,7 @@
             $jose = new Stylist($stylist3, $id3);
 
             //Act
-            $result = array();
-            array_push($result, $debra);
-            array_push($result, $george);
-            array_push($result, $jose);
+            $result = array($debra, $george, $jose);
             $found_stylists = Stylist::getAll();
 
             //Assert
@@ -140,6 +138,33 @@
 
             //Assert
             $this->assertEquals($found_stylist[0], $debra);
+        }
+
+        function test_findStylistsClients()
+        {
+          //Arrange
+          $debra = new Stylist("Debra Collins");
+          $debra->save();
+          $george = new Stylist("George Peterson");
+          $george->save();
+          $jose = new Stylist("Jose Martinez");
+          $jose->save();
+
+          $george = new Client("George Clooney", $jose->getId());
+          $george->save();
+          $gwen = new Client("Gwen Stefani", $george->getId());
+          $gwen->save();
+          $beyonce = new Client("Beyonce", $jose->getId());
+          $beyonce->save();
+          $jen = new Client("Jen Doe", $debra->getId());
+          $jen->save();
+
+          //Act
+          $result = array($george, $beyonce);
+          $found_clients = Stylist::findStylistsClients($jose->getId());
+
+          //Assert
+          $this->assertEquals($found_clients, $result);
         }
 
         function test_update()

@@ -45,6 +45,11 @@
             return $stylists;
         }
 
+        static function findStylistsClients($stylist_id)
+        {
+            
+        }
+
         static function getAll()
         {
             $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
