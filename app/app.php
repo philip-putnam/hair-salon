@@ -71,9 +71,10 @@
 
     $app->get('/stylist/{stylist_id}/edit/client/{client_id}', function($stylist_id, $client_id) use($app) {
         $found_client = Client::find($client_id);
+        $stylist = Stylist::find($stylist_id);
         $stylists = Stylist::getAll();
 
-        return $app['twig']->render("editClient.html.twig", array('client' => $found_client, 'stylists' => $stylists));
+        return $app['twig']->render("editClient.html.twig", array('client' => $found_client, 'stylist' => $stylist, 'stylists' => $stylists));
     });
 
     $app->patch('/client/updated/{id}', function($id) use($app) {

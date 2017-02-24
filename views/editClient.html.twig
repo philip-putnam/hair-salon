@@ -14,6 +14,7 @@
             <label for='name'>New client name: </label>
             <input type='text' name='name'>
 
+            <p>Current Client Stylist: <strong>{{ stylist[0].getName }}</strong></p>
             <select name='stylist_id'>
                 <option></option>
                 {% for stylist in stylists %}

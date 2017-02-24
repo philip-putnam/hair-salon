@@ -80,6 +80,16 @@
 
         static function update($new_name, $new_stylist_id, $client_id)
         {
+            if ($new_name === "")
+            {
+                $client = Client::find($client_id);
+                $new_name = $client[0]->getName();
+            }
+            if ($new_stylist_id === "")
+            {
+                $client = Client::find($client_id);
+                $new_stylist_id = $client[0]->getStylistId();
+            }
             $GLOBALS['DB']->exec("UPDATE clients SET name = '{$new_name}', stylist_id = {$new_stylist_id} WHERE id = {$client_id};");
         }
 
