@@ -141,5 +141,22 @@
             //Assert
             $this->assertEquals($found_stylist[0], $debra);
         }
+
+        function test_update()
+        {
+            //Arrange
+            $debra = new Stylist("Debra Collins");
+            $debra->save();
+            $new_name = "Debora Collins";
+
+            //Act
+            Stylist::update($debra->getId(), $new_name);
+            $updated_debra = Stylist::find($debra->getid());
+            $result = new Stylist($new_name, $debra->getId());
+
+            //Assert
+            $this->assertEquals($updated_debra[0], $result);
+
+        }
     }
 ?>

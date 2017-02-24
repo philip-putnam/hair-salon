@@ -59,6 +59,11 @@
             return $stylists;
         }
 
+        static function update($stylist_id, $new_name)
+        {
+            
+        }
+
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM stylists;");
