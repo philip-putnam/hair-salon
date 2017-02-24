@@ -78,6 +78,11 @@
           return $clients;
         }
 
+        static function deleteClient($client_id)
+        {
+            
+        }
+
     }
 
 ?>

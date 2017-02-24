@@ -17,7 +17,7 @@
         protected function tearDown()
         {
             Stylist::deleteAll();
-            $GLOBALS['DB']->exec("DELETE FROM clients;");
+            Client::deleteAll();
         }
 
         function test_getName()
@@ -140,58 +140,77 @@
 
         function test_save()
         {
-          //Arrange
-          $stylist = new Stylist("Debra Collins");
-          $stylist->save();
+            //Arrange
+            $stylist = new Stylist("Debra Collins");
+            $stylist->save();
 
-          $george = new Client("George Clooney", $stylist->getId());
-          $george->save();
-          $gwen = new Client("Gwen Stefani", $stylist->getId());
-          $gwen->save();
+            $george = new Client("George Clooney", $stylist->getId());
+            $george->save();
+            $gwen = new Client("Gwen Stefani", $stylist->getId());
+            $gwen->save();
 
-          //Act
-          $result = Client::getAll();
+            //Act
+            $result = Client::getAll();
 
-          //Assert
-          $this->assertEquals([$george, $gwen], $result);
+            //Assert
+            $this->assertEquals([$george, $gwen], $result);
         }
 
         function test_deleteAll()
         {
-          //Arrange
-          $stylist = new Stylist("Debra Collins");
-          $stylist->save();
+            //Arrange
+            $stylist = new Stylist("Debra Collins");
+            $stylist->save();
 
-          $george = new Client("George Clooney", $stylist->getId());
-          $george->save();
-          $gwen = new Client("Gwen Stefani", $stylist->getId());
-          $gwen->save();
+            $george = new Client("George Clooney", $stylist->getId());
+            $george->save();
+            $gwen = new Client("Gwen Stefani", $stylist->getId());
+            $gwen->save();
 
-          //Act
-          Client::deleteAll();
-          $result = Client::getAll();
+            //Act
+            Client::deleteAll();
+            $result = Client::getAll();
 
-          //Assert
-          $this->assertEquals([], $result);
+            //Assert
+            $this->assertEquals([], $result);
         }
 
         function test_find()
         {
-          //Arrange
-          $stylist = new Stylist("Debra Collins");
-          $stylist->save();
+            //Arrange
+            $stylist = new Stylist("Debra Collins");
+            $stylist->save();
 
-          $george = new Client("George Clooney", $stylist->getId());
-          $george->save();
-          $gwen = new Client("Gwen Stefani", $stylist->getId());
-          $gwen->save();
+            $george = new Client("George Clooney", $stylist->getId());
+            $george->save();
+            $gwen = new Client("Gwen Stefani", $stylist->getId());
+            $gwen->save();
 
-          //Act
-          $result = $george;
-          $found_client = Client::find($george->getId());
+            //Act
+            $result = $george;
+            $found_client = Client::find($george->getId());
 
-          //Assert
-          $this->assertEquals($found_client, [$george]);
+            //Assert
+            $this->assertEquals($found_client, [$george]);
+        }
+
+        function test_deletClient()
+        {
+            //Arrange
+            $stylist = new Stylist("Debra Collins");
+            $stylist->save();
+
+            $george = new Client("George Clooney", $stylist->getId());
+            $george->save();
+            $gwen = new Client("Gwen Stefani", $stylist->getId());
+            $gwen->save();
+
+            //Act
+            Client::deleteClient($george->getId());
+            $result = Client::getAll();
+
+            //Assert
+            $this->assertEquals([$gwen], $result);
         }
 
     }
