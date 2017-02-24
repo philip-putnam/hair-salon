@@ -32,6 +32,11 @@
             $this->stylist_id = $new_stylist_id;
         }
 
+        function getid()
+        {
+            
+        }
+
     }
 
 ?>
