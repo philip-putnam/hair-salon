@@ -30,7 +30,20 @@
 
             //Assert
             $this->assertEquals($stylist_name, $result);
+        }
 
+        function test_setName()
+        {
+            //Arrange
+            $stylist = new Stylist("Debra Collins");
+
+            //Act
+            $stylist->setName("Debora Collins");
+            $result = "Debora Collins";
+            $new_name = $stylist->getName();
+
+            //Assert
+            $this->assertEquals($new_name, $result);
         }
 
         function test_getAll()
