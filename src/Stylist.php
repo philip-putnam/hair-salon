@@ -66,7 +66,7 @@
 
         static function deleteStylist($stylist_id)
         {
-            
+            $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$stylist_id};");
         }
 
         static function deleteAll()
