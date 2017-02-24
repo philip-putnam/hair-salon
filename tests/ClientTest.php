@@ -136,9 +136,27 @@
 
             //Assert
             $this->assertEquals($found_clients, $result);
-
-
         }
+
+        function test_save()
+        {
+          //Arrange
+          $stylist = new Stylist("Debra Collins");
+          $stylist->save();
+
+          $george = new Client("George Clooney", $stylist->getId());
+          $george->save();
+          $gwen = new Client("Gwen Stefani", $stylist->getId());
+          $gwen->save();
+
+          //Act
+          $result = [$george, $gwen];
+          $found_clients = Client::getAll();
+
+          //Assert
+          $this->assertEquals($found_clients, $result);
+        }
+
     }
 
 ?>
