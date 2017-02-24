@@ -27,9 +27,9 @@
             return $this->stylist_id;
         }
 
-        function setStylistId()
+        function setStylistId($new_stylist_id)
         {
-            
+            $this->stylist_id = $new_stylist_id;
         }
 
     }
