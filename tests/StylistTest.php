@@ -50,13 +50,14 @@
         function test_save()
         {
           //Arrange
-          $debra = new Stylist("Debra Collins");
+          $id = NULL;
+          $debra = new Stylist("Debra Collins", $id);
           $debra->save();
-          $george = new Stylist("George Peterson");
+          $george = new Stylist("George Peterson", $id);
           $george->save();
-          $jorge = new Stylist("Jose Martinez");
+          $jorge = new Stylist("Jose Martinez", $id);
           $jorge->save();
-          $jen = new Stylist("Jen Doe");
+          $jen = new Stylist("Jen Doe", $id);
           $jen->save();
 
           //Act
