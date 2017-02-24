@@ -19,6 +19,20 @@
             $GLOBALS['DB']->exec("DELETE FROM stylists");
         }
 
+        function test_getName()
+        {
+            //Arrange
+            $stylist = new Stylist("Debra Collins");
+
+            //Act
+            $result = "Debra Collins";
+            $stylist_name = $stylist->getName();
+
+            //Assert
+            $this->assertEquals($stylist_name, $result);
+
+        }
+
         function test_getAll()
         {
             //Arrange
