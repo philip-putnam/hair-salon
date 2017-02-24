@@ -24,7 +24,7 @@
 
         function getStylistId()
         {
-            
+            return $this->stylist_id;
         }
 
     }
