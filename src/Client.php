@@ -32,11 +32,15 @@
             $this->stylist_id = $new_stylist_id;
         }
 
-        function getid()
+        function getId()
         {
             return $this->id;
         }
 
+        static function getAll()
+        {
+
+        }
     }
 
 ?>

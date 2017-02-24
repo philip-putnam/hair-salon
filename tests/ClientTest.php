@@ -14,6 +14,12 @@
 
     class ClientTest extends PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+            Stylist::deleteAll();
+            $GLOBALS['DB']->exec("DELETE FROM clients;");
+        }
+
         function test_getName()
         {
             //Arrange
@@ -101,6 +107,37 @@
 
             //Assert
             $this->assertEquals($client_stylist_id, $result);
+        }
+
+        function test_getAll()
+        {
+            //Arrange
+            $debra = new Stylist("Debra Collins");
+            $debra->save();
+
+            $name1 = "George Clooney";
+            $name2 = "Gwen Stefani";
+
+            $stylist_id = $debra->getId();
+
+            $id1 = 13;
+            $id2 = 25;
+
+            $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id, id) VALUES ('{$name1}', {$stylist_id}, {$id1});");
+            $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id, id) VALUES ('{$name2}', {$stylist_id}, {$id2});");
+
+            //Act
+            $george = new Client($name1, $stylist_id, $id1);
+            $gwen = new Client($name2, $stylist_id, $id2);
+            $result = array();
+            array_push($result, $george);
+            array_push($result, $gwen);
+            $found_clients = Client::getAll();
+
+            //Assert
+            $this->assertEquals($found_clients, $result);
+
+
         }
     }
 
