@@ -29,6 +29,24 @@
             //Assert
             $this->assertEquals($client_name, $result);
         }
+
+        function test_setName()
+        {
+            //Arrange
+            $stylist = new Stylist("Debra Collins");
+            $stylist->save();
+
+            $client = new Client("George Clooney", $stylist->getId());
+            $new_name = "George S Cloonae";
+
+            //Act
+            $result = $new_name;
+            $client->setName($new_name);
+            $client_name = $client->getName();
+
+            //Assert
+            $this->assertEquals($client_name, $result);
+        }
     }
 
 ?>
