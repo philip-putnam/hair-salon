@@ -65,7 +65,17 @@
 
         static function find($client_id)
         {
-            
+          $found_client = $GLOBALS['DB']->query("SELECT * FROM clients WHERE id = {$client_id};");
+          $clients = array();
+          foreach($found_client as $client)
+          {
+              $name = $client['name'];
+              $stylist_id = $client['stylist_id'];
+              $id = $client['id'];
+              $new_client = new Client($name, $stylist_id, $id);
+              array_push($clients, $new_client);
+          }
+          return $clients;
         }
 
     }
