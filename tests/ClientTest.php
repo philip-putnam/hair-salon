@@ -150,11 +150,10 @@
           $gwen->save();
 
           //Act
-          $result = [$george, $gwen];
-          $found_clients = Client::getAll();
+          $result = Client::getAll();
 
           //Assert
-          $this->assertEquals($found_clients, $result);
+          $this->assertEquals([$george, $gwen], $result);
         }
 
     }
