@@ -139,7 +139,7 @@
             $found_stylist = Stylist::find($debra->getId());
 
             //Assert
-            $this->assertEquals($found_stylist, $debra);
+            $this->assertEquals($found_stylist[0], $debra);
         }
     }
 ?>

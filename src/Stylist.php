@@ -33,7 +33,16 @@
 
         static function find($stylist_id)
         {
-
+            $found_stylist = $GLOBALS['DB']->query("SELECT * FROM stylists WHERE id = {$stylist_id};");
+            $stylists = array();
+            foreach($found_stylist as $stylist)
+            {
+                $name = $stylist['name'];
+                $id = $stylist['id'];
+                $new_stylist = new Stylist($name, $id);
+                array_push($stylists, $new_stylist);
+            }
+            return $stylists;
         }
 
         static function getAll()
