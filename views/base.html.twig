@@ -2,13 +2,17 @@
 <html>
     <head>
         {% block head %}
-            <title>{% block title %}Hair Salon {% endblock %}</title>
+            <title>{% block title %}Hair Salon{% endblock %}</title>
         {% endblock %}
     </head>
 
     <body>
         <div class="container">
-            {% block content %}<h1>Hair Salon Page</h1>{% endblock %}
+            <header>
+                <h1>Hair Salon Page</h1>
+                <h3>{% block header %}{% endblock %}</h3>
+            </header>
+            {% block content %}{% endblock %}
 
 
 

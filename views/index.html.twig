@@ -1,1 +1,17 @@
 {% extends 'base.html.twig' %}
+
+
+{% block header %}
+    <h2>Main</h2>
+{% endblock %}
+
+{% block content %}
+    <div class='form-group'>
+      <form action='/add-stylist' method='post'>
+        <label for='name'>New Stylist Name: </label>
+        <input name='name' type='text'>
+
+        <button type='submit'>Add Stylist</button>
+      </form>
+    </div>
+{% endblock %}
