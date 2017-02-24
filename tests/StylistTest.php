@@ -46,5 +46,24 @@
             //Assert
             $this->assertEquals($found_stylists, $result);
         }
+
+        function test_save()
+        {
+          //Arrange
+          $debra = new Stylist("Debra Collins");
+          $debra->save();
+          $george = new Stylist("George Peterson");
+          $george->save();
+          $jorge = new Stylist("Jose Martinez");
+          $jorge->save();
+          $jen = new Stylist("Jen Doe");
+          $jen->save();
+
+          //Act
+          $result = Stylist::getAll();
+
+          //Assert
+          $this->assertEquals([$debra, $george, $jorge, $jen], $result);
+        }
     }
 ?>

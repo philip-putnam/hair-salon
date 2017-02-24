@@ -25,6 +25,11 @@
             return $this->id;
         }
 
+        function save()
+        {
+          
+        }
+
         static function getAll()
         {
             $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
